@@ -29,13 +29,6 @@ The following analyses were conducted on the monthly data series, aiming to eval
 
 - **Stationarity and Unit Root Testing**  
   Each series underwent a detailed visual and statistical examination to identify trends, seasonality, and potential non-stationarity. Augmented Dickey-Fuller (ADF) tests were applied to confirm stationarity and determine the order of differencing necessary for each series.
-
-- **Vector Autoregression (VAR) and Impact-Response Analysis**  
-  A VAR model was employed to examine the dynamic interactions between variables. Impact-response analysis further evaluated how each variable responds to shocks from others, such as policy changes or external risk factors, thereby providing insight into how these relationships evolve over time.
-
-- **Policy Recommendations**  
-  Based on the analytical results, specific recommendations are provided for Turkey's banking sector, aimed at strengthening resilience against economic fluctuations and enhancing policy effectiveness.
-
 ## Results and Key Insights
 
 ### Summary of Stationarity Testing
