@@ -18,11 +18,6 @@ The datasets used in this analysis were sourced from CBRT's EVDS system and the 
    - **Description**: Consumer Price Index (CPI) reported by TURKSTAT, serving as a benchmark for price-level changes.  
    - **Type**: Price index data  
 
-4. **General Index (ITO 1995=100)**  
-   - **Description**: Cost of Living Index for wage earners, published by the Istanbul Chamber of Commerce.  
-   - **Type**: General index  
-   - **Base Year**: 1995=100  
-
 ## Project Objectives
 
 The following analyses were conducted on the monthly data series, aiming to evaluate long-term equilibrium trends, stationarity, and responsiveness to shocks within the Turkish economy:
