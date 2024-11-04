@@ -77,6 +77,4 @@ The author of this project, a recent graduate (July 2024) of the Department of E
 ## Acknowledgments
 
 Data sources:  
-- **CBRT (Central Bank of Turkey)** - [EVDS Data Distribution System](https://evds2.tcmb.gov.tr/index.php?/evds/serieMarket)  
-- **TURKSTAT**  
-- **Istanbul Chamber of Commerce (ITO)**  
+- **CBRT (Central Bank of Turkey)** - [EVDS Data Distribution System](https://evds2.tcmb.gov.tr/index.php?/evds/serieMarket) 
