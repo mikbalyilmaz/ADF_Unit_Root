@@ -1,3 +1,4 @@
+:hot_face: :hot_face: 
 This project presents a comprehensive analysis of various economic indicators sourced from the Central Bank of Turkey's (CBRT) EVDS data distribution system, focusing on Turkey's banking, consumer spending, and inflationary trends. Through rigorous stationarity and unit root testing, Vector Autoregression (VAR) modeling, and impact-response analysis, this study aims to uncover the underlying dynamics within Turkey's macroeconomic environment. Ultimately, the findings will contribute valuable insights toward effective policy recommendations for the Turkish banking sector.
 
 ## Data Overview
