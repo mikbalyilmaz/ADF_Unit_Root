@@ -58,7 +58,7 @@ These findings lay a foundation for more advanced econometric modeling, providin
 
 ## Contact Information
 
-The author of this project, a recent graduate (July 2024) of the Department of Econometrics at Ankara Hacı Bayram Veli University, can be reached at:
+The author of this project, a recent graduate (July 2024) of the Department of Econometrics at Hacı Bayram Veli University, can be reached at:
 
 - **Email**: myucanlar@gmail.com  
 - **Alternate Email**: mikbal.yilmaz@gmx.com
