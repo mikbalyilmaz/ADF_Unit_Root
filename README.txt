@@ -1,7 +1,7 @@
 :hot_face: :hot_face: 
 As we know, most time series in the real world are nonstationary, and there are different types of nonstationarity.    
 
-This project presents a comprehensive analysis of various economic indicators sourced from the Central Bank of Turkey's (CBRT) EVDS data distribution system, focusing on Turkey's banking, consumer spending, and inflationary trends. Through rigorous stationarity and unit root testing, Vector Autoregression (VAR) modeling, and impact-response analysis, this study aims to uncover the underlying dynamics within Turkey's macroeconomic environment. Ultimately, the findings will contribute valuable insights toward effective policy recommendations for the Turkish banking sector.
+This project presents a comprehensive analysis of various economic indicators sourced from the Central Bank of Türkiye's (CBRT) EVDS data distribution system, focusing on Türkiye's banking, consumer spending, and inflationary trends. Through rigorous stationarity and unit root testing, Vector Autoregression (VAR) modeling, and impact-response analysis, this study aims to uncover the underlying dynamics within Türkiye's macroeconomic environment. Ultimately, the findings will contribute valuable insights toward effective policy recommendations for the Turkish banking sector.
 
 ## Data Overview
 
@@ -54,9 +54,9 @@ The differing integration orders across the series have several implications for
 
 ## Conclusion
 
-In this portfolio project, we aimed to illustrate core time series methodologies by applying stationarity tests and examining integration orders across key economic indicators in Turkey. Through this analysis, we have demonstrated how different variables require tailored differencing techniques to achieve stationarity, a crucial step in effective time series modeling. The insights derived here not only underscore the importance of testing for stationarity but also highlight the need for flexible approaches that account for structural breaks and other complexities in economic data.
+In this portfolio project, we aimed to illustrate core time series methodologies by applying stationarity tests and examining integration orders across key economic indicators in Türkiye. Through this analysis, we have demonstrated how different variables require tailored differencing techniques to achieve stationarity, a crucial step in effective time series modeling. The insights derived here not only underscore the importance of testing for stationarity but also highlight the need for flexible approaches that account for structural breaks and other complexities in economic data.
 
-These findings lay a foundation for more advanced econometric modeling, providing a robust basis for forecasting and policy analysis within Turkey's dynamic economic landscape. Thank you for reading this project—I hope it provides valuable insights and lays the groundwork for further exploration in macroeconomic time series analysis.
+These findings lay a foundation for more advanced econometric modeling, providing a robust basis for forecasting and policy analysis within Türkiye's dynamic economic landscape. Thank you for reading this project—I hope it provides valuable insights and lays the groundwork for further exploration in macroeconomic time series analysis.
 
 ## Contact Information
 
@@ -69,4 +69,4 @@ The author of this project, a recent graduate (July 2024) of the Department of E
 ## Acknowledgments
 
 Data sources:  
-- **CBRT (Central Bank of Turkey)** - [EVDS Data Distribution System](https://evds2.tcmb.gov.tr/index.php?/evds/serieMarket) 
+- **CBRT (Central Bank of Türkiye)** - [EVDS Data Distribution System](https://evds2.tcmb.gov.tr/index.php?/evds/serieMarket) 
