@@ -97,4 +97,4 @@ Graduate (July 2024), Department of Econometrics, Hacı Bayram Veli University
 
 ---
 
-All rights reserved © Muhammed İkbal Yılmaz, 2024
+© All rights reserved sezinpersonal, 2024
