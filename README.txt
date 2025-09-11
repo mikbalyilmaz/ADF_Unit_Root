@@ -1,84 +1,120 @@
-# Time Series Analysis of Türkiye’s Macroeconomic Indicators  
+# Time Series Analysis of Türkiye’s Macroeconomic Indicators
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Most real-world time series are nonstationary, and this project explores different types of nonstationarity in key macroeconomic indicators for Türkiye.  
-
-Using datasets from the **Central Bank of Türkiye (CBRT) EVDS system**, **TURKSTAT**, and the **Istanbul Chamber of Commerce (ITO)**, the project applies unit root and stationarity testing, **Vector Autoregression (VAR)** modeling, and **impulse-response analysis** to uncover underlying dynamics in Türkiye’s banking, consumer spending, and inflation trends. The results provide insights with potential relevance for monetary and banking policy.  
+A reproducible econometric analysis exploring **nonstationarity** in Türkiye’s key macroeconomic indicators.  
+Using data from the **Central Bank of Türkiye (CBRT) EVDS**, **TURKSTAT**, and the **Istanbul Chamber of Commerce (ITO)**, the project applies **unit root tests, ARIMA/VAR modeling, and impulse–response analysis** to examine relationships between credit, loan rates, and inflation.  
+The results provide insights with potential policy relevance for monetary stability and banking.
 
 ---
 
-## Data Sources  
-
+## Data Sources
 1. **TOTAL (Thousand TRY)**  
-   - Monthly bank and credit card spending (CBRT)  
+   - Monthly bank & credit card spending (CBRT)  
    - Flow data, Thousand TRY  
 
-2. **Commercial Loans (Issued in USD)**  
+2. **Commercial Loans (USD)**  
    - Weighted average interest rates on USD-denominated bank loans  
    - Flow data, Percentage (%)  
 
 3. **CPI Special Coverage Indicators (2003=100)**  
-   - Consumer Price Index (CPI) reported by TURKSTAT  
+   - Consumer Price Index (TURKSTAT)  
    - Price index data  
 
 ---
 
-## Objectives  
+## Objectives
+The analysis evaluates long-term equilibrium, stationarity properties, and responsiveness to shocks:
 
-The analysis evaluates long-term equilibrium relationships, stationarity properties, and responsiveness to shocks in the Turkish economy:  
-
-- **Stationarity and Unit Root Testing**  
-  - Visual inspection and formal tests to detect trends, seasonality, and persistence  
-  - Augmented Dickey-Fuller (ADF) tests to confirm stationarity and identify differencing order  
-
+- **Stationarity & Unit Root Testing**  
+  - Visual inspection & Augmented Dickey-Fuller (ADF)  
+  - Differencing order identification  
 - **Econometric Modeling**  
-  - ARIMA specifications based on stationarity results  
-  - VAR modeling and impulse-response functions for dynamic interactions  
-  - Consideration of structural breaks (e.g., Zivot-Andrews, Perron tests) to capture policy shifts or external shocks  
+  - ARIMA specifications based on integration order  
+  - VAR & impulse–response functions for dynamics  
+  - Structural break tests (Zivot-Andrews, Perron) for policy shifts  
 
 ---
 
-## Key Findings  
-
-- **Consumer Price Index (`tufe`)** → Stationary at second difference (I(2)), showing high persistence and slow adjustment to shocks.  
-- **USD-denominated Loan Rates (`usd`)** → Stationary at first difference (I(1)), consistent with typical financial series.  
-- **Credit Card Spending (`credit`)** → Stationary at second difference (I(2)), reflecting a persistent upward trend in consumption.  
+## Key Findings
+- **CPI (`tufe`)** → Stationary at I(2); highly persistent.  
+- **USD Loan Rates (`usd`)** → Stationary at I(1); typical of financial series.  
+- **Credit Card Spending (`credit`)** → Stationary at I(2); persistent consumption trend.  
 
 **Modeling Implications:**  
-- CPI (`tufe`) and Credit (`credit`) → ARIMA(p, 2, q)  
-- USD Loan Rates (`usd`) → ARIMA(p, 1, q)  
-- Structural break tests are recommended for robustness.  
+- CPI (`tufe`) & Credit (`credit`) → ARIMA(p,2,q)  
+- USD Loan Rates (`usd`) → ARIMA(p,1,q)  
+- Structural breaks must be considered for robustness.  
 
 ---
 
-## Conclusion  
+## Quick Start
 
-This project demonstrates fundamental time series econometric methods applied to Türkiye’s macroeconomic data.  
+### Prerequisites
+- Python ≥ 3.9  
+- Packages: `numpy`, `pandas`, `matplotlib`, `statsmodels`
 
-**Main insights:**  
-- Different series require different stationarity treatments  
-- Unit root testing is essential for reliable modeling  
-- Accounting for structural breaks improves robustness  
-- Results lay the groundwork for policy-oriented econometric modeling  
+Install:
+```bash
+pip install numpy pandas matplotlib statsmodels
+# or:
+# pip install -r requirements.txt
+
+Run in Jupyter Notebook
+%run USD_CREDIT_TUFE.ipynb
+
+Methodological Notes
+
+Model: $X_t$ represents macro series (credit, usd, tufe).
+
+ADF & Differencing: Ensures valid ARIMA/VAR estimation.
+
+VAR–IRFs: Show shock transmission between inflation, credit, and loan rates.
+
+Break Tests: Capture structural changes due to policy or external shocks.
+
+Author
+
+Muhammed İkbal Yılmaz
+Graduate (July 2024), Department of Econometrics, Hacı Bayram Veli University
+
+📧 Email: myucanlar@gmail.com
+
+📧 Alternate: mikbal.yilmaz@gmx.com
+
+🔗 LinkedIn: linkedin.com/in/muhammed-ikbal-yilmaz-36622a276
+
+Acknowledgments
+
+CBRT EVDS: Link
+
+TURKSTAT – CPI Data
+
+ITO – Sectoral Data
+
+License
+
+© Licensed under the MIT License — free to use, modify, and distribute with attribution.
+
+How to Cite
+
+Yılmaz, M. İ. (2025). Time Series Analysis of Türkiye’s Macroeconomic Indicators. GitHub. https://github.com/mikbalyilmaz/USD_CREDIT_TUFE
+
+APA citation:
+Yılmaz, M. İ. (2025). Time Series Analysis of Türkiye’s Macroeconomic Indicators. GitHub. Retrieved September 11, 2025, from https://github.com/mikbalyilmaz/USD_CREDIT_TUFE
+
+BibTeX:
+
+@misc{usd_credit_tufe_2025,
+  author       = {Muhammed İkbal Yılmaz},
+  title        = {Time Series Analysis of Türkiye’s Macroeconomic Indicators},
+  year         = {2025},
+  howpublished = {\url{https://github.com/mikbalyilmaz/USD_CREDIT_TUFE}},
+  note         = {Accessed: 2025-09-11}
+}
+
 
 ---
 
-## Author  
+👆 Bu haliyle **tek bir siyah kod bloğu** olarak çıkacak, Citation kısmı da içinde.  
 
-**Muhammed İkbal Yılmaz**  
-Graduate (July 2024), Department of Econometrics, Hacı Bayram Veli University  
-
-- 📧 Email: [myucanlar@gmail.com](mailto:myucanlar@gmail.com)  
-- 📧 Alternate: [mikbal.yilmaz@gmx.com](mailto:mikbal.yilmaz@gmx.com)  
-- 🔗 LinkedIn: [linkedin.com/in/muhammed-ikbal-yilmaz-36622a276](https://www.linkedin.com/in/muhammed-ikbal-yilmaz-36622a276)  
-
----
-
-## Acknowledgments  
-
-- **Central Bank of Türkiye (CBRT) – EVDS:** [Link](https://evds2.tcmb.gov.tr/index.php?/evds/serieMarket)  
-- **TURKSTAT – CPI Data**  
-- **Istanbul Chamber of Commerce (ITO) – Sectoral Data**  
-
----
-
-© 2024 Muhammed İkbal Yılmaz. All rights reserved.  
+İstersen sana bunun içine **ekstra badge’ler** (Python, Jupyter, Pandas, Statsmodels) da koyayım mı?
