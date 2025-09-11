@@ -112,9 +112,3 @@ BibTeX:
   note         = {Accessed: 2025-09-11}
 }
 
-
----
-
-👆 Bu haliyle **tek bir siyah kod bloğu** olarak çıkacak, Citation kısmı da içinde.  
-
-İstersen sana bunun içine **ekstra badge’ler** (Python, Jupyter, Pandas, Statsmodels) da koyayım mı?
