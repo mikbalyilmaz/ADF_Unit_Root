@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "ADF unit roots in four Turkish monthly series"
+version: 2.0.0
+authors:
+  - family-names: "Yılmaz"
+    given-names: "Muhammed İkbal"
+    email: "myucanlar@gmail.com"
+    affiliation: "Department of Econometrics, Ankara Hacı Bayram Veli University"
+repository-code: "https://github.com/mikbalyilmaz/ADF_Unit_Root"
+license: MIT
+keywords:
+  - unit root
+  - augmented Dickey-Fuller test
+  - KPSS test
+  - Zivot-Andrews test
+  - structural break
+  - inflation
+  - Türkiye
