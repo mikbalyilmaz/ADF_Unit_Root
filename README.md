@@ -18,7 +18,7 @@ behind every model and test in the code.
 |---|---|
 | `unitroots/data.py` | Loads the data and checks it; Fridays per month; log, weekly and real transformations |
 | `unitroots/urtests.py` | ADF, KPSS and Zivot–Andrews as thin wrappers around statsmodels; ADF over a range of lags; order of integration tested from the top down; the Zivot–Andrews regression at the break |
-| `unitroots/style.py` | Shared figure style (Latin Modern Roman, fixed colours) |
+| `unitroots/style.py` | Shared figure style (Latin Modern Roman, the colours and axis rule of muhammedikbalyilmaz.com); checks every figure before saving it |
 | `tests/run_tests.py` | Unit tests: the ADF regression and its AIC/BIC lag choice estimated directly by OLS, the KPSS statistic from its formula, the output of version 1, a calendar computed with `datetime`, simulated series with a known answer, and a direct search for the Zivot–Andrews statistic and break date |
 | `analysis/01_data.py` | Version 1 reproduced; calendar effect in card spending; exponential growth of prices (Figure 1) |
 | `analysis/02_integration_order.py` | ADF under three models and two lag criteria, KPSS, p-value against the number of lags, order of integration (Table 1, Figure 2) |
@@ -98,7 +98,7 @@ See [NEWS.md](NEWS.md): what was added and a table of the corrections to version
 
 See [CITATION.cff](CITATION.cff), or:
 
-> Yılmaz, M. İ. (2026). *ADF unit roots in four Turkish monthly series* (Version 2.0.0) [Computer software].
+> Yılmaz, M. İ. (2026). *ADF unit roots in four Turkish monthly series* (Version 2.1.0) [Computer software].
 > https://github.com/mikbalyilmaz/ADF_Unit_Root
 
 ## License

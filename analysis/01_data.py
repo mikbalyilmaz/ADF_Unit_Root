@@ -19,7 +19,7 @@ import statsmodels.api as sm
 
 from common import DATA, save_table
 from unitroots import adf, weekday_count
-from unitroots.style import BLUE, MUTED, ORANGE, decimal_axis, save_figure, use_style
+from unitroots.style import BLUE, INK, fit_axis, free_axis, save_figure, use_style
 
 # Version 1, reproduced: the eight tests it ran (raw series, Model 3, maxlag 14, AIC)
 V1_TESTS = {"credit": 2, "usd": 1, "tufe": 2}  # highest difference tested by version 1
@@ -64,33 +64,39 @@ use_style()
 
 
 def draw():
+    import matplotlib.dates as mdates
     import matplotlib.pyplot as plt
-    fig, axes = plt.subplots(1, 3, figsize=(7.4, 2.7), constrained_layout=True)
+    fig, axes = plt.subplots(1, 3, figsize=(4.75, 2.05), constrained_layout=True,
+                             gridspec_kw={"width_ratios": [1, 1.1, 1.1]})
     ax = axes[0]
     k = counts.diff().iloc[1:]
-    rng = np.random.default_rng(0)
-    ax.scatter(k + rng.uniform(-0.12, 0.12, len(k)), 100 * y.iloc[1:], s=7, color=BLUE, alpha=0.7, lw=0)
+    rng = np.random.default_rng(0)                       # horizontal jitter only, so that points do not hide
+    pct = 100 * y.iloc[1:]
+    ax.scatter(k + rng.uniform(-0.12, 0.12, len(k)), pct, s=5, color=BLUE, lw=0, clip_on=False)
     xs = np.array([-1.3, 1.3])
     fit = sm.OLS(y.iloc[1:], sm.add_constant(k)).fit()
-    ax.plot(xs, 100 * (fit.params.iloc[0] + fit.params.iloc[1] * xs), color=ORANGE, lw=1.2)
-    ax.set_xticks([-1, 0, 1])
+    ax.plot(xs, 100 * (fit.params.iloc[0] + fit.params.iloc[1] * xs), color=INK, lw=1.4)
+    ax.set_xticks([-1, 0, 1], ["\u22121", "0", "+1"])
+    ax.set_xlim(-1.5, 1.5)
+    free_axis(ax, "x")
+    fit_axis(ax, "y", pct, 20)
     ax.set_xlabel("Change in number of Fridays")
-    ax.set_ylabel("Monthly change in log credit (%)")
-    ax.set_title("(a) Card spending")
+    ax.set_title("(a) Card spending, Δlog, %")
     ax = axes[1]
-    ax.plot(DATA.index, DATA.tufe.diff(), color=BLUE, lw=1)
-    ax.set_ylabel("Index points")
-    ax.set_title("(b) Monthly change in CPI")
-    decimal_axis(ax)
+    d = DATA.tufe.diff()
+    ax.plot(DATA.index, d, color=BLUE, lw=1)
+    fit_axis(ax, "y", d, 50)
+    ax.set_title("(b) Change in CPI, points")
     ax = axes[2]
-    ax.plot(DATA.index, 100 * np.log(DATA.tufe).diff(), color=BLUE, lw=1)
-    ax.axhline(0, color=MUTED, lw=0.6)
-    ax.set_ylabel("Percent")
-    ax.set_title("(c) Monthly inflation, 100 Δlog CPI")
-    decimal_axis(ax)
+    infl = 100 * np.log(DATA.tufe).diff()
+    ax.plot(DATA.index, infl, color=BLUE, lw=1)
+    ax.axhline(0, color=INK, lw=0.6)
+    fit_axis(ax, "y", infl, 4)
+    ax.set_title("(c) Inflation, %")
     for a in axes[1:]:
-        a.tick_params(axis="x", labelrotation=0)
-        a.xaxis.set_major_locator(__import__("matplotlib.dates", fromlist=["YearLocator"]).YearLocator(3))
+        a.xaxis.set_major_locator(mdates.YearLocator(4))
+        a.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
+        free_axis(a, "x")
     return fig
 
 

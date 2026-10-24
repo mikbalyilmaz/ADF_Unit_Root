@@ -14,10 +14,11 @@ t-statistics of the shift, the trend and the lagged level).
 """
 
 import numpy as np
+import pandas as pd
 
-from common import SERIES, label, save_table
+from common import SERIES, save_table
 from unitroots import za_regression, za_test
-from unitroots.style import BLUE, MUTED, ORANGE, decimal_axis, save_figure, use_style
+from unitroots.style import BLUE, INK, event_line, fit_axis, free_axis, save_figure, use_style
 
 CASES = [("log_tufe", 1), ("log_ito", 1), ("usd", 0), ("usd", 1), ("log_credit_real", 1)]
 
@@ -47,20 +48,22 @@ use_style()
 def draw():
     import matplotlib.dates as mdates
     import matplotlib.pyplot as plt
-    fig, axes = plt.subplots(1, 2, figsize=(7.2, 2.8), constrained_layout=True, sharey=True)
-    for ax, name, title in zip(axes, ("log_tufe", "log_ito"),
-                               ("(a) CPI", "(b) ITO index")):
-        s = 100 * SERIES[name].diff().dropna()
+    fig, axes = plt.subplots(1, 2, figsize=(4.75, 2.2), constrained_layout=True)
+    data = {name: 100 * SERIES[name].diff().dropna() for name in ("log_tufe", "log_ito")}
+    for ax, name, title in zip(axes, ("log_tufe", "log_ito"), ("(a) CPI, monthly, %", "(b) ITO index, monthly, %")):
+        s = data[name]
         row = next(r for r in rows if r["series"] == name)
         brk = np.datetime64(row["break"] + "-01")
         ax.plot(s.index, s, color=BLUE, lw=1)
-        ax.axvline(brk, color=MUTED, lw=0.8, ls="--")
-        ax.hlines(row["mean_before"], s.index[0], brk, color=ORANGE, lw=1.6, zorder=3)
-        ax.hlines(row["mean_after"], brk, s.index[-1], color=ORANGE, lw=1.6, zorder=3)
+        ax.hlines(row["mean_before"], s.index[0], brk, color=INK, lw=1.8, zorder=3)
+        ax.hlines(row["mean_after"], brk, s.index[-1], color=INK, lw=1.8, zorder=3)
+        when = pd.Timestamp(brk)
+        event_line(ax, brk, f"{when:%b}\n{when:%Y}", ha="right")
         ax.set_title(title)
-        ax.xaxis.set_major_locator(mdates.YearLocator(3))
-        decimal_axis(ax)
-    axes[0].set_ylabel("Monthly inflation (%)")
+        ax.xaxis.set_major_locator(mdates.YearLocator(4))
+        ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
+        free_axis(ax, "x")
+        fit_axis(ax, "y", pd.concat(list(data.values())), 4)
     return fig
 
 

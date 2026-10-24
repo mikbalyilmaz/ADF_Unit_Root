@@ -1,5 +1,22 @@
 # Changes
 
+## Version 2.1.0
+
+No result changed: every table and every number in the note is the same as in version 2.0.0.
+
+- Figures redrawn in the style of the charts on muhammedikbalyilmaz.com: series in black and deep blue (#0033a0),
+  red dotted lines for dates and reference values, labels at the end of the lines where possible, bold panel titles,
+  Latin Modern Roman. Every figure is 4.75 inches wide, the width of the text in the note.
+- Axis rule: every value axis starts and ends at a labelled tick, and there are no minor ticks. Before a figure is
+  saved, `unitroots/style.py` checks it and stops with an error if an axis limit is not a labelled tick, if two pieces of
+  text overlap, if a note or a legend lies on a data line, or if a note leaves its panel.
+- The panel titles of Figure 1 give the unit of each series.
+- The project note now uses the note template: 11 pt, A4, 4.5 cm side margins, a header with the short name and
+  the compilation date, and the page count. Wide equations and tables were split or set in a smaller size to fit the
+  narrower text block.
+- References: one paragraph per entry with a 1.27 cm hanging indent and an ampersand before the last author
+  (APA 7).
+
 ## Version 2.0.0
 
 ### New

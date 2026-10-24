@@ -3,4 +3,4 @@
 from .data import fridays, load, transformed, weekday_count
 from .urtests import V1_SETTINGS, adf, adf_by_lag, integration_order, kpss_test, za_regression, za_test
 
-__version__ = "2.0.0"
+__version__ = "2.1.0"

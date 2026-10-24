@@ -1,58 +1,61 @@
-\documentclass[a4paper,10pt]{article}
+\documentclass[11pt,a4paper]{article}
 
-% Encoding and typeface: XeLaTeX with Latin Modern Roman (fontspec default), English via polyglossia
+% Typeface: XeLaTeX with Latin Modern Roman (fontspec default)
 \usepackage{fontspec}
 \usepackage{polyglossia}
 \setdefaultlanguage[variant=british]{english}
 
-% Layout (tight margins)
-\usepackage[a4paper,top=1.2cm,bottom=1.3cm,left=1.3cm,right=1.3cm]{geometry}
+% Page: the measures of the note template (A4, 11 pt, 4.5 cm side margins, header and page count)
+\usepackage[a4paper,left=4.5cm,right=4.5cm,top=4.5cm,bottom=4.1cm,headheight=14pt,headsep=0.55cm,
+  footskip=0.55cm]{geometry}
+\linespread{0.946}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textbf{PROJECT NOTE} $|$ ADF\_Unit\_Root}
+\fancyhead[R]{\small\textbf{Compiled on:} \notedate}
+\fancyfoot[C]{\small\thepage\,/\,\pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
 
-% Typography
 \usepackage{microtype}
-\usepackage{setspace}
-\setstretch{0.92}
-
-% Paragraph settings
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{3pt}
-
-% Section styling
-\usepackage{titlesec}
-\titleformat{\section}{\bfseries\normalsize}{\thesection.}{0.4em}{}
-\titlespacing*{\section}{0pt}{6pt}{3pt}
-
-% Better lists
-\usepackage{enumitem}
-\setlist{noitemsep, topsep=2pt}
-
-% Mathematics, tables, figures
-\usepackage{amsmath}
-\usepackage{booktabs}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,array,tabularx}
 \usepackage{graphicx}
-\usepackage[font=small,labelfont=bf,labelsep=period,skip=3pt]{caption}
-\setlength{\textfloatsep}{8pt}
-\setlength{\floatsep}{6pt}
+\usepackage{enumitem}
+\setlist{noitemsep, topsep=3pt, leftmargin=*}
+\usepackage{xcolor}
+\definecolor{secblue}{HTML}{1F3A5F}
+\definecolor{boxback}{HTML}{EEF2F6}
+\definecolor{mark}{HTML}{9B2226}
+\definecolor{hl}{HTML}{FFF36B}
+\usepackage{titlesec}
+\titleformat{\section}{\color{secblue}\bfseries\normalsize}{\thesection.}{0.4em}{}
+\titlespacing*{\section}{0pt}{10pt}{4pt}
+\usepackage[font=small,labelfont=bf,labelsep=period,skip=4pt]{caption}
+\usepackage[bottom]{footmisc}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\setlength{\textfloatsep}{10pt}
+\emergencystretch=3em
+
+\newcommand{\notedate}{\number\day\space\ifcase\month\or January\or February\or March\or April\or May\or June\or
+  July\or August\or September\or October\or November\or December\fi\space\number\year}
 
 \input{numbers.tex}
 
 \begin{document}
 
-% Header (top-right)
-\begin{flushright}
-\small \textbf{Compiled on:} \today
-\end{flushright}
 
-\vspace{-6pt}
-\hrule
-\vspace{24pt}
+\vspace*{14pt}
+\begin{tabular}{@{}p{2.35cm}@{}p{\dimexpr\textwidth-2.35cm}@{}}
+\textbf{TITLE:} & \textbf{\large Unit roots in four Turkish monthly series: what the ADF test says once the data, the model and the lags are examined}\\[3pt]
+\textbf{SUBJECT:} & Aim, method and results of the analyses in version 2 of the \texttt{ADF\_Unit\_Root} repository\\[3pt]
+\textbf{AUTHOR:} & Muhammed İkbal Yılmaz (myucanlar@gmail.com)
+\end{tabular}
 
-\textbf{TITLE:} Unit roots in four Turkish monthly series: what the ADF test says once the data, the model and the lags are examined
-
-\textbf{SUBJECT:} Aim, method and results of the analyses in version 2 of the \texttt{ADF\_Unit\_Root} repository
-
-\textbf{PREPARED BY:} Muhammed İkbal Yılmaz (myucanlar@gmail.com)
-
+\vspace{8pt}
 \vspace{12pt}
 
 \section{Aim and scope}
@@ -87,7 +90,10 @@ is $\pi_t = 100\,\Delta p_t$, where $\Delta y_t = y_t - y_{t-1}$ and $\Delta^d =
 \textbf{Why per week.} If the monthly figure is the sum of the weekly figures $W_w$ of the weeks ending on a Friday in month $t$,
 then $C_t = F_t \bar W_t$, with $\bar W_t$ the average week, and
 \begin{equation}
-\Delta \log C_t = \Delta \log \bar W_t + \Delta \log F_t, \qquad \Delta \log F_t \in \{0, \pm\log(5/4)\} = \{0, \pm \LogFiveFour\}.
+\begin{split}
+\Delta \log C_t &= \Delta \log \bar W_t + \Delta \log F_t,\\
+\Delta \log F_t &\in \{0, \pm\log(5/4)\} = \{0, \pm \LogFiveFour\}.
+\end{split}
 \label{eq:calendar}
 \end{equation}
 Analysis 1 estimates $\Delta \log C_t = a + b\,\Delta F_t + u_t$ by OLS for $F_t$ and for the count of each other weekday; under
@@ -163,7 +169,7 @@ $\mathbf{d}_t = (1, t)'$ and no break, and uses it for every $T_B$; the original
 computation in \texttt{tests/run\_tests.py}:
 
 \begin{center}\footnotesize
-\begin{tabular}{lll}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{2.1cm}>{\raggedright\arraybackslash}p{1.7cm}>{\raggedright\arraybackslash}X@{}}
 \toprule
 Step & Equations & Code \\
 \midrule
@@ -173,7 +179,7 @@ Order of integration & top-down sequence & \texttt{integration\_order(series, \{
 KPSS & \eqref{eq:kpss} & \texttt{kpss\_test(series, regression)} \\
 Zivot--Andrews & \eqref{eq:za} & \texttt{za\_test}; regression at the break: \texttt{za\_regression} \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{center}
 
 \section{Analysis 1: What the series contain (Figure~\ref{fig:data})}
@@ -225,16 +231,18 @@ lags from 0 to 14.
 \centering\footnotesize
 \caption{ADF $p$-values (number of lags in parentheses) for Models 1--3 with AIC and Model 2 with BIC, and KPSS $p$-values
 (trend-stationarity for levels of trending series, level-stationarity otherwise; reported within $[0.01, 0.10]$).}\label{tab:grid}
-\begin{tabular}{lrrrrr}
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}Xrrrrr@{}}
 \toprule
- & Model 1, AIC & Model 2, AIC & Model 3, AIC & Model 2, BIC & KPSS \\
+ & Model 1 & Model 2 & Model 3 & Model 2 & KPSS \\
+ & AIC & AIC & AIC & BIC & \\
 \midrule
 \input{tab_grid.tex}
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 \begin{figure}[h]
-\centering\includegraphics[width=0.92\linewidth]{../figures/fig2_lags.pdf}
+\centering\includegraphics[width=\textwidth]{../figures/fig2_lags.pdf}
 \caption{ADF $p$-value (Model 2) of the first differences against the number of lagged differences. Circles and squares mark the
 numbers of lags chosen by AIC and BIC. Dotted: 5\%.}\label{fig:lags}
 \end{figure}
@@ -269,13 +277,13 @@ indices), and for comparison for $R_t$, $\Delta R_t$ and $\Delta c^r_t$. At the 
 re-estimated by OLS with inflation in percent ($\pi_t$) to read off the shift $\hat\theta$ and the $t$-statistics of $\theta$ and
 $\beta$.
 
-\textbf{How to read the figure.} Dashed: the estimated break, the last month of the first regime. Orange: mean monthly inflation in
-each regime.
+\textbf{How to read the figure.} Red dotted line: the estimated break, the last month of the first regime. Thick black
+lines: mean monthly inflation in each regime.
 
 \begin{figure}[h]
-\centering\includegraphics[width=0.92\linewidth]{../figures/fig3_breaks.pdf}
-\caption{Monthly inflation of (a) the CPI and (b) the ITO index, with the Zivot--Andrews break (dashed) and the mean inflation
-before and after it.}\label{fig:breaks}
+\centering\includegraphics[width=\textwidth]{../figures/fig3_breaks.pdf}
+\caption{Monthly inflation of (a) the CPI and (b) the ITO index, with the Zivot--Andrews break (red dotted line) and the mean
+inflation before and after it (thick black lines).}\label{fig:breaks}
 \end{figure}
 
 \textbf{Finding.} For CPI inflation the statistic is $\ZaTufe$ against critical values of $\ZaCvOne$ (1\%) and $\ZaCvFive$ (5\%):
@@ -307,24 +315,25 @@ exponentially growing series and by ignoring this shift.
 
 \section*{References}
 {\small
-Dickey, D. A., Fuller, W. A. (1979). Distribution of the estimators for autoregressive time series with a unit root.
-\textit{Journal of the American Statistical Association}, 74(366), 427--431.\\
-Dickey, D. A., Pantula, S. G. (1987). Determining the order of differencing in autoregressive processes. \textit{Journal of
-Business \& Economic Statistics}, 5(4), 455--461.\\
-Kwiatkowski, D., Phillips, P. C. B., Schmidt, P., Shin, Y. (1992). Testing the null hypothesis of stationarity against the
-alternative of a unit root. \textit{Journal of Econometrics}, 54(1--3), 159--178.\\
-MacKinnon, J. G. (1994). Approximate asymptotic distribution functions for unit-root and cointegration tests. \textit{Journal
-of Business \& Economic Statistics}, 12(2), 167--176.\\
-MacKinnon, J. G. (2010). Critical values for cointegration tests. Queen's Economics Department Working Paper No.~1227, Queen's
-University.\\
-Said, S. E., Dickey, D. A. (1984). Testing for unit roots in autoregressive-moving average models of unknown order.
-\textit{Biometrika}, 71(3), 599--607.\\
-Zivot, E., Andrews, D. W. K. (1992). Further evidence on the great crash, the oil-price shock, and the unit-root hypothesis.
-\textit{Journal of Business \& Economic Statistics}, 10(3), 251--270.\\
-statsmodels documentation: \texttt{adfuller}, \texttt{kpss}, \texttt{zivot\_andrews}.
+\setlength{\parskip}{2pt}
+\hangindent=1.27cm\hangafter=1 Dickey, D. A., \& Fuller, W. A. (1979). Distribution of the estimators for autoregressive time series with a unit root.
+\textit{Journal of the American Statistical Association}, 74(366), 427--431.\par
+\hangindent=1.27cm\hangafter=1 Dickey, D. A., \& Pantula, S. G. (1987). Determining the order of differencing in autoregressive processes. \textit{Journal of
+Business \& Economic Statistics}, 5(4), 455--461.\par
+\hangindent=1.27cm\hangafter=1 Kwiatkowski, D., Phillips, P. C. B., Schmidt, P., \& Shin, Y. (1992). Testing the null hypothesis of stationarity against the
+alternative of a unit root. \textit{Journal of Econometrics}, 54(1--3), 159--178.\par
+\hangindent=1.27cm\hangafter=1 MacKinnon, J. G. (1994). Approximate asymptotic distribution functions for unit-root and cointegration tests. \textit{Journal
+of Business \& Economic Statistics}, 12(2), 167--176.\par
+\hangindent=1.27cm\hangafter=1 MacKinnon, J. G. (2010). Critical values for cointegration tests. Queen's Economics Department Working Paper No.~1227, Queen's
+University.\par
+\hangindent=1.27cm\hangafter=1 Said, S. E., \& Dickey, D. A. (1984). Testing for unit roots in autoregressive-moving average models of unknown order.
+\textit{Biometrika}, 71(3), 599--607.\par
+\hangindent=1.27cm\hangafter=1 Zivot, E., \& Andrews, D. W. K. (1992). Further evidence on the great crash, the oil-price shock, and the unit-root hypothesis.
+\textit{Journal of Business \& Economic Statistics}, 10(3), 251--270.\par
+\hangindent=1.27cm\hangafter=1 statsmodels documentation: \texttt{adfuller}, \texttt{kpss}, \texttt{zivot\_andrews}.\par
 
 \smallskip
-An AI coding assistant was used in writing the code and in preparing this note. All numbers are generated from
+All numbers are generated from
 \texttt{figures/*.csv} by \texttt{make\_paper.py}.
 }
 
