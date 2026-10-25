@@ -68,4 +68,4 @@ def draw():
 
 
 save_figure("fig3_breaks", draw,
-            lambda: "Figure 3. Monthly inflation, the Zivot-Andrews break and the mean in each regime")
+            lambda: "Figure 3. Monthly inflation, the Zivot–Andrews break and the mean in each regime")

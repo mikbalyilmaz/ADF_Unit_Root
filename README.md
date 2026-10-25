@@ -98,7 +98,7 @@ See [NEWS.md](NEWS.md): what was added and a table of the corrections to version
 
 See [CITATION.cff](CITATION.cff), or:
 
-> Yılmaz, M. İ. (2026). *ADF unit roots in four Turkish monthly series* (Version 2.1.0) [Computer software].
+> Yılmaz, M. İ. (2026). *ADF unit roots in four Turkish monthly series* (Version 2.1.1) [Computer software].
 > https://github.com/mikbalyilmaz/ADF_Unit_Root
 
 ## License

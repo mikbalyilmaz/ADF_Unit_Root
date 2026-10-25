@@ -1,5 +1,15 @@
 # Changes
 
+## Version 2.1.1
+
+No result changed: every table and every number in the note is the same as in version 2.1.0.
+
+- Figure 1: the titles of panels (a) and (b) touched each other. Panel (b) is now titled "ΔCPI, points" and panel (a)
+  is wider.
+- `unitroots/style.py`: the figure check now also stops when the titles of two panels are less than 6 pt apart; the
+  overlap test alone had let the two touching titles of Figure 1 through.
+- Figure 3: "Zivot–Andrews" in the heading is written with an en dash, as in the rest of the repository.
+
 ## Version 2.1.0
 
 No result changed: every table and every number in the note is the same as in version 2.0.0.

@@ -67,7 +67,7 @@ def draw():
     import matplotlib.dates as mdates
     import matplotlib.pyplot as plt
     fig, axes = plt.subplots(1, 3, figsize=(4.75, 2.05), constrained_layout=True,
-                             gridspec_kw={"width_ratios": [1, 1.1, 1.1]})
+                             gridspec_kw={"width_ratios": [1.25, 1, 1]})
     ax = axes[0]
     k = counts.diff().iloc[1:]
     rng = np.random.default_rng(0)                       # horizontal jitter only, so that points do not hide
@@ -86,7 +86,7 @@ def draw():
     d = DATA.tufe.diff()
     ax.plot(DATA.index, d, color=BLUE, lw=1)
     fit_axis(ax, "y", d, 50)
-    ax.set_title("(b) Change in CPI, points")
+    ax.set_title("(b) ΔCPI, points")
     ax = axes[2]
     infl = 100 * np.log(DATA.tufe).diff()
     ax.plot(DATA.index, infl, color=BLUE, lw=1)

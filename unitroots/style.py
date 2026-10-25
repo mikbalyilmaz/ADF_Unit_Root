@@ -256,6 +256,11 @@ def _is_free_text(t):
     return True
 
 
+def _is_title(t):
+    ax = t.axes
+    return ax is not None and t in (ax.title, ax._left_title, ax._right_title)
+
+
 def may_touch(*texts):
     """Allow these texts to touch data lines (e.g. a value written on its own reference line)."""
     for t in texts:
@@ -289,6 +294,10 @@ def check(fig):
             (a, ba), (b, bb) = texts[i], texts[j]
             if ba.shrunk(0.96, 0.85).overlaps(bb.shrunk(0.96, 0.85)):
                 msgs.append(f"text overlap: {a.get_text()[:40]!r} / {b.get_text()[:40]!r}")
+            elif _is_title(a) and _is_title(b) and a.axes is not b.axes:
+                gap = fig.dpi * 6 / 72                      # panel titles at least 6 pt apart
+                if ba.padded(gap / 2).overlaps(bb.padded(gap / 2)):
+                    msgs.append(f"panel titles closer than 6 pt: {a.get_text()[:40]!r} / {b.get_text()[:40]!r}")
     for t, bb in texts:     # notes placed in axes coordinates must stay inside their panel
         ax = t.axes
         if ax is not None and _is_free_text(t) and t.get_transform() == ax.transAxes \
