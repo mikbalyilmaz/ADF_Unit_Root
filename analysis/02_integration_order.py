@@ -90,6 +90,8 @@ def draw():
     free_axis(ax, "x")
     value_axis(ax, "y", 0, 1, 0.2)
     ax.set_title("ADF p-value (Model 2); circle: lag chosen by AIC, square: by BIC")
+    for a in fig.axes:   # the vertical axis stands 4 pt away from the data, which start on the first x value
+        a.spines["left"].set_position(("outward", 4))
     return fig
 
 
