@@ -1,5 +1,13 @@
 # Changes
 
+## Version 2.1.3
+
+No result changed: every table and every number in the note is the same as in version 2.1.2.
+
+| # | Version 2.1.2 | Version 2.1.3 |
+|---|---|---|
+| 1 | The README listed the results without the figures; its citation gave version 2.1.1 | The README shows Figures 1 to 3 next to the results they belong to (card spending, USD loan rate, prices); the citation gives the current version |
+
 ## Version 2.1.2
 
 No result changed: every table and every number in the note is the same as in version 2.1.1.

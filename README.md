@@ -61,8 +61,18 @@ integration_order(s["log_ito"], {0: "ct", 1: "c", 2: "c"}, autolag="BIC")   # (o
 
 ## Main results
 
+- **Card spending has a calendar effect.** The monthly figure behaves like the sum of weekly figures over the weeks
+  ending on a Friday: the number of Fridays explains 0.87 of the variance of its monthly log change, and one more
+  Friday raises spending by 0.229 in logs (log(5/4) = 0.223). After dividing by the number of Fridays and by the CPI,
+  BIC and KPSS point to I(1); AIC picks 12 lags (annual pattern) and the test then loses power.
+
+![What the series contain](figures/fig1_data.png)
+
 - **USD loan rate: I(1).** The first difference rejects a unit root under every model, both lag criteria and every
   number of lags up to six; KPSS does not reject its stationarity. Same conclusion as version 1.
+
+![ADF p-value against the number of lags](figures/fig2_lags.png)
+
 - **Prices: I(1) with a break, not I(2).** In logs, monthly inflation does not reject a unit root with AIC
   (CPI: p = 0.137 with 6 lags; ITO: p = 0.112), and KPSS rejects stationarity. The Zivot–Andrews test rejects the unit
   root in favour of stationarity with a single shift in level (CPI: statistic −6.16 against −5.28 at 1%; ITO: −5.69);
@@ -70,10 +80,8 @@ integration_order(s["log_ito"], {0: "ct", 1: "c", 2: "c"}, autolag="BIC")   # (o
   indices place the break one month apart: after 2021-10 (CPI) and 2021-09 (ITO); mean monthly CPI inflation rises
   from 0.99% to 4.18%. The I(2) of version 1 is explained by testing the level of an exponentially growing series
   and ignoring the shift.
-- **Card spending has a calendar effect.** The monthly figure behaves like the sum of weekly figures over the weeks
-  ending on a Friday: the number of Fridays explains 0.87 of the variance of its monthly log change, and one more
-  Friday raises spending by 0.229 in logs (log(5/4) = 0.223). After dividing by the number of Fridays and by the CPI,
-  BIC and KPSS point to I(1); AIC picks 12 lags (annual pattern) and the test then loses power.
+
+![Inflation, the Zivot–Andrews break and regime means](figures/fig3_breaks.png)
 
 All numbers are in `figures/*.csv` and in the project note.
 
@@ -98,7 +106,7 @@ See [NEWS.md](NEWS.md): what was added and a table of the corrections to version
 
 See [CITATION.cff](CITATION.cff), or:
 
-> Yılmaz, M. İ. (2026). *ADF unit roots in four Turkish monthly series* (Version 2.1.1) [Computer software].
+> Yılmaz, M. İ. (2026). *ADF unit roots in four Turkish monthly series* (Version 2.1.3) [Computer software].
 > https://github.com/mikbalyilmaz/ADF_Unit_Root
 
 ## License
